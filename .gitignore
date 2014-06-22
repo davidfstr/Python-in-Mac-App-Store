@@ -1,0 +1,9 @@
+# OS X
+.DS_Store
+
+# Python
+.py[co]
+
+# Build artifacts
+build
+dist
