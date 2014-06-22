@@ -60,11 +60,11 @@ ln -s \
     2.7 \
     "$APP_PATH/Contents/Frameworks/Python.framework/Versions/A"
 
-# Sign the app, frameworks, and all helper tools, as required by the Mac App Store
+# Sign the app and all helper tools as required by the Mac App Store.
+# (This example app has no helper tools.)
+# 
 # NOTE: Inner tools must be signed before the outer app package.
 # NOTE: codesign with the -f option can incorrectly return exit status of 1
-codesign -s "$SIGNING_IDENTITY" -f \
-    "$APP_PATH/Contents/Frameworks/Python.framework/Versions/2.7"
 codesign -s "$SIGNING_IDENTITY" -f \
     --entitlements src/app.entitlements \
     "$APP_PATH/Contents/MacOS/HelloAppStore"
