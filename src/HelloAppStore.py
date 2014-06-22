@@ -1,4 +1,3 @@
-import sys
 import wx
 
 app = wx.PySimpleApp()
