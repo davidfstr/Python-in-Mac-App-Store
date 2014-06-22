@@ -9,6 +9,29 @@ APP_PATH=dist/HelloAppStore.app
 # certificate that resides within the Keychain Access application.
 SIGNING_IDENTITY="3rd Party Mac Developer Application: David Foster"
 
+# Ensure building with Python 2.7
+# NOTE: If a different version of Python is desired, the Python patching steps
+#       that occur later in this script must be updated.
+python -V 2> build/python_version.txt
+PYTHON_VERSION=`cat build/python_version.txt`
+if [[ $PYTHON_VERSION != Python\ 2.7* ]]; then
+    echo "*** This packaging script requires Python 2.7."
+    exit 1
+fi
+
+# Ensure wx is present and is the expected version
+python -c 'import wx' 2> /dev/null
+if [[ $? != 0 ]]; then
+    echo "*** This application requires wx to be installed."
+    exit 1
+fi
+WX_VERSION=`python -c 'import wx; print wx.version()'`
+if [[ $WX_VERSION != "3.0.0.0 osx-cocoa (classic)" ]]; then
+    echo "*** This application is only tested with wx 3.0.0.0 osx-cocoa (classic)"
+    echo "    Other versions of wx might not work."
+    # (continue)
+fi
+
 # Build dist/HelloAppStore.app
 python setup.py py2app
 
