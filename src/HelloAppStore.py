@@ -1,7 +1,11 @@
-import wx
+import hello_pyobjc
+import sys
 
-app = wx.PySimpleApp()
-colors = ['Red', 'Blue', 'Green', 'Pink', 'White']
-dialog = wx.SingleChoiceDialog(
-    None, 'Pick something...', 'Pick a Color', colors)
-dialog.ShowModal()
+# Display a simple dialog
+hello_pyobjc.main()
+#hello_tk.main()
+#hello_wx.main()
+#hello_qt.main()
+
+# Explicitly quit, as is required by some toolkits (like QT)
+sys.exit(0)
