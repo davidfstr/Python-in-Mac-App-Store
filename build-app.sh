@@ -45,21 +45,6 @@ remove_arch ppc7400 \
 remove_arch ppc7400 \
     "$APP_PATH/Contents/Resources/lib/python2.7/lib-dynload/_sha512.so"
 
-# Repair Python.framework to conform to "Anatomy of Framework Bundles",
-# as required by the Mac App Store
-ln -s \
-    Versions/Current/Python \
-    "$APP_PATH/Contents/Frameworks/Python.framework/Python"
-ln -s \
-    Versions/Current/Resources \
-    "$APP_PATH/Contents/Frameworks/Python.framework/Resources"
-ln -s \
-    A \
-    "$APP_PATH/Contents/Frameworks/Python.framework/Versions/Current"
-ln -s \
-    2.7 \
-    "$APP_PATH/Contents/Frameworks/Python.framework/Versions/A"
-
 # Sign the app and all helper tools as required by the Mac App Store.
 # (This example app has no helper tools.)
 # 
