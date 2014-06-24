@@ -1,9 +1,9 @@
-import hello_pyobjc
+import hello_tk
 import sys
 
 # Display a simple dialog
-hello_pyobjc.main()
-#hello_tk.main()
+hello_tk.main()
+#hello_pyobjc.main()
 #hello_wx.main()
 #hello_qt.main()
 
