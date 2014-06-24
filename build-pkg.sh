@@ -4,7 +4,7 @@
 # using XCode's Application Loader tool
 # 
 
-# The package signing identity corresponds to a "Developer ID Installer"
+# The package signing identity corresponds to a "3rd Party Mac Developer Installer"
 # certificate that resides within the Keychain Access application.
 SIGNING_IDENTITY="3rd Party Mac Developer Installer: David Foster"
 

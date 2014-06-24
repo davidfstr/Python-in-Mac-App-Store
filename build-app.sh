@@ -5,7 +5,7 @@
 
 APP_PATH=dist/HelloAppStore.app
 
-# The package signing identity corresponds to a "Developer ID Application"
+# The package signing identity corresponds to a "3rd Party Mac Developer Application"
 # certificate that resides within the Keychain Access application.
 SIGNING_IDENTITY="3rd Party Mac Developer Application: David Foster"
 
