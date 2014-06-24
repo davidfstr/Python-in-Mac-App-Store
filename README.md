@@ -6,6 +6,18 @@ It displays a simple dialog and exits.
 
 ## Quickstart
 
+### Prerequisites
+
+* OS X 10.8 (Mountain Lion)
+    * Other OS X versions from 10.6+ will probably work.
+* Python 2.7.x
+    * This exact version of Python is required because the build process has patching steps specific to `lib/python2.7`.
+* py2app 0.8.1 or later
+    * Really old versions of py2app create invalid `Python.framework` bundles in generated apps that won't pass Mac App Store checks.
+* **(Optional)** wx 3.0.0.0 osx-cocoa (classic)
+* **(Optional)** PySide 1.1.1 / QT 4.8.6
+* **(Optional)** PtQt 4.11 / sip 4.16.1 / QT 4.8.6
+
 ### How to Build
 
 1. Clone this repository or download a ZIP file of it:

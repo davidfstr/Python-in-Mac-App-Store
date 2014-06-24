@@ -19,19 +19,6 @@ if [[ $PYTHON_VERSION != Python\ 2.7* ]]; then
     exit 1
 fi
 
-# Ensure wx is present and is the expected version
-python -c 'import wx' 2> /dev/null
-if [[ $? != 0 ]]; then
-    echo "*** This application requires wx to be installed."
-    exit 1
-fi
-WX_VERSION=`python -c 'import wx; print wx.version()'`
-if [[ $WX_VERSION != "3.0.0.0 osx-cocoa (classic)" ]]; then
-    echo "*** This application is only tested with wx 3.0.0.0 osx-cocoa (classic)"
-    echo "    Other versions of wx might not work."
-    # (continue)
-fi
-
 # Build dist/HelloAppStore.app
 python setup.py py2app
 
