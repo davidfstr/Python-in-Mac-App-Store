@@ -39,6 +39,7 @@ It displays a simple dialog and exits.
 ### How to Submit
 
 1. Create a record for your app inside [iTunes Connect](https://itunesconnect.apple.com/).
+    * Create a unique *bundle identifier* for your app record and update the `CFBundleIdentifier` key in `src/Icon.plist` to match it.
     * Fill out app metadata, including its description, keywords, screenshots, etc.
     * Press "Ready to Upload Binary".
 2. Open Application Loader:
