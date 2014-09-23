@@ -86,7 +86,7 @@ The above assessment leaves the following choices for Mac App Store apps:
 
 Probably PyObjC is the best choice to get full functionality. I'm disappointed that wxPython gets the shaft here, as most of my preexisting GUI apps in Python are written with wxPython.
 
-This example app uses PyObjC by default but includes samples for several of the other GUI libraries.
+This example app uses Tkinter by default but includes samples for several of the other GUI libraries.
 
 If you'd like to try the other samples, open `src/HelloAppStore.py` and change the `main` function to call one of the other libraries.
 
