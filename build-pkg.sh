@@ -4,17 +4,22 @@
 # using XCode's Application Loader tool
 # 
 
-# The package signing identity corresponds to a "3rd Party Mac Developer Installer"
-# certificate that resides within the Keychain Access application.
-SIGNING_IDENTITY="3rd Party Mac Developer Installer: David Foster"
-
 # Check prerequisites
 if [ ! -d dist/HelloAppStore.app ]; then
     echo "*** Must build app before building pkg."
     exit 1
 fi
 
+source code-signing-config.sh
+
+dash_dash_sign=''
+if [ ${DO_CODE_SIGNING} -eq 1 ] ; then
+    dash_dash_sign="--sign ${SIGNING_IDENTITY}"
+fi
+
 # NOTE: If having trouble with signing, debug by removing the --sign flag and
 #       trying to sign manually with the productsign command
 productbuild --component dist/HelloAppStore.app /Applications dist/HelloAppStore.pkg \
-    --sign "$SIGNING_IDENTITY"
+    $dash_dash_sign
+
+# vim:ts=4:sts=4:sw=4:et
