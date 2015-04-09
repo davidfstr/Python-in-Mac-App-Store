@@ -23,18 +23,20 @@ It displays a simple dialog and exits.
 1. Clone this repository or download a ZIP file of it:
     * `git clone https://github.com/davidfstr/Python-in-Mac-App-Store.git`
     * `cd Python-in-Mac-App-Store`
-2. Configure code signing:
-    * **(Option 1)** If you have Mac App Store signing certificates, update the `SIGNING_IDENTITY` line in `./build-app.sh` and `./build-pkg.sh` to refer to them:
+2. Build the app package `dist/HelloAppStore.app`:
+    * `./build-app.sh`
+3. Build the installer package `dist/HelloAppStore.pkg`:
+    * `./build-pkg.sh`
+
+For submission to the App Store you will also need to enable code signing:
+
+1. Configure code signing:
+    * Update the `SIGNING_IDENTITY` line in `code-signing-config.sh` to refer to your Mac App Store signing certificates:
         * You will need an [Apple Developer account](https://developer.apple.com/devcenter/mac/) and a subscription to the Mac Developer Program ($99/year) to get signing certificates.
         * Create the appropriate Mac App Store certificates in the [Mac Dev Center](https://developer.apple.com/account/mac/certificate/) and download them to your dev machine.
-    * **(Option 2)** If you do not have a Mac App Store signing certificate:
-        1. Comment out all `codesign` commands in `./build-app.sh`.
-        2. Remove the `--sign "$SIGNING_IDENTITY"` option from `./build-pkg.sh`
-        3. With these modifications you will be able to build the app and the installer package, but you will not be able to submit them to the store.
-4. Build the app package `dist/HelloAppStore.app`:
-    * `./build-app.sh`
-5. Build the installer package `dist/HelloAppStore.pkg`:
-    * `./build-pkg.sh`
+    * Change the `DO_CODE_SIGNING` line in `code-signing-config.sh` to assign
+      `1` instead of `0`.
+2. Rebuild the app package and installer package using the same steps as above.
 
 ### How to Submit
 
@@ -49,7 +51,6 @@ It displays a simple dialog and exits.
 3. When you are prompted for an item to upload, select `dist/HelloAppStore.pkg`.
 
 ## Writing your Own App?
-
 
 ### Choosing a GUI Library
 

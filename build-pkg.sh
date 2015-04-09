@@ -10,16 +10,15 @@ if [ ! -d dist/HelloAppStore.app ]; then
     exit 1
 fi
 
+# Import configuration related to code signing
 source code-signing-config.sh
 
-dash_dash_sign=''
 if [ ${DO_CODE_SIGNING} -eq 1 ] ; then
-    dash_dash_sign="--sign ${SIGNING_IDENTITY}"
+    # NOTE: If having trouble with signing, debug by removing the --sign flag and
+    #       trying to sign manually with the productsign command
+    productbuild --component dist/HelloAppStore.app /Applications dist/HelloAppStore.pkg \
+        --sign "${SIGNING_IDENTITY_INSTALLER}"
+else
+    productbuild --component dist/HelloAppStore.app /Applications dist/HelloAppStore.pkg
 fi
 
-# NOTE: If having trouble with signing, debug by removing the --sign flag and
-#       trying to sign manually with the productsign command
-productbuild --component dist/HelloAppStore.app /Applications dist/HelloAppStore.pkg \
-    $dash_dash_sign
-
-# vim:ts=4:sts=4:sw=4:et

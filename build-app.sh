@@ -22,6 +22,7 @@ python setup.py py2app
 
 # Limit Universal Binaries to only contain the architechures {i386, x86_64},
 # since these are the only architechures permitted on the Mac App Store.  
+# 
 # In addition, remove all i386 items since all Macs models from early 2007 and 
 # newer have x86_64 support (aka Core 2 Duo or newer).  This will save 1.1MB
 # of space in Python's libraries alone, more from other frameworks..
@@ -33,6 +34,7 @@ for i in ${APP_PATH}/Contents/Resources/lib/python2.7/lib-dynload/* ; do
     remove_arch i386 ${i}
 done
 
+# Import configuration related to code signing
 source code-signing-config.sh
 
 # Sign the app, frameworks, and all helper tools as required by the Mac App Store.
@@ -40,17 +42,15 @@ source code-signing-config.sh
 # 
 # NOTE: Inner frameworks and tools must be signed before the outer app package.
 # NOTE: codesign with the -f option can incorrectly return exit status of 1
-
 if [ ${DO_CODE_SIGNING} -eq 1 ] ; then
-    codesign -s "$SIGNING_IDENTITY" -f \
+    codesign -s "$SIGNING_IDENTITY_APP" -f \
         "$APP_PATH/Contents/Frameworks/Python.framework/Versions/2.7"
-    codesign -s "$SIGNING_IDENTITY" -f \
+    codesign -s "$SIGNING_IDENTITY_APP" -f \
         --entitlements src/app.entitlements \
         "$APP_PATH/Contents/MacOS/HelloAppStore"
-    codesign -s "$SIGNING_IDENTITY" -f \
+    codesign -s "$SIGNING_IDENTITY_APP" -f \
         --entitlements src/app.entitlements \
         "$APP_PATH/Contents/MacOS/python"
 fi
 
 exit 0
-# vim:ts=4:sts=4:sw=4:et
